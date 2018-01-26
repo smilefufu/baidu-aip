@@ -10,6 +10,7 @@
     │   ├── ocr.py            // OCR
     │   ├── nlp.py            // NLP
     │   ├── kg.py             // 知识图谱
+    │   ├── textcensor.py     // 文本审核
     │   ├── imagecensor.py    // 图像审核
     │   ├── imageclassify.py  // 图像识别
     │   └── imagesearch.py    // 图像搜索
