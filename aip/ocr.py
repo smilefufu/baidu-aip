@@ -47,13 +47,15 @@ class AipOcr(AipBase):
 
     __receiptUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/receipt'
 
+    __lotteryUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/lottery'
+
     __customUrl = 'https://aip.baidubce.com/rest/2.0/solution/v1/iocr/recognise'
 
     __tableRecognizeUrl = 'https://aip.baidubce.com/rest/2.0/solution/v1/form_ocr/request'
 
     __tableResultGetUrl = 'https://aip.baidubce.com/rest/2.0/solution/v1/form_ocr/get_request_result'
 
-    
+
     def basicGeneral(self, image, options=None):
         """
             通用文字识别
@@ -66,7 +68,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalBasicUrl, data)
-    
+
     def basicGeneralUrl(self, url, options=None):
         """
             通用文字识别
@@ -79,7 +81,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalBasicUrl, data)
-    
+
     def basicAccurate(self, image, options=None):
         """
             通用文字识别（高精度版）
@@ -92,7 +94,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__accurateBasicUrl, data)
-    
+
     def general(self, image, options=None):
         """
             通用文字识别（含位置信息版）
@@ -105,7 +107,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalUrl, data)
-    
+
     def generalUrl(self, url, options=None):
         """
             通用文字识别（含位置信息版）
@@ -118,7 +120,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalUrl, data)
-    
+
     def accurate(self, image, options=None):
         """
             通用文字识别（含位置高精度版）
@@ -131,7 +133,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__accurateUrl, data)
-    
+
     def enhancedGeneral(self, image, options=None):
         """
             通用文字识别（含生僻字版）
@@ -144,7 +146,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalEnhancedUrl, data)
-    
+
     def enhancedGeneralUrl(self, url, options=None):
         """
             通用文字识别（含生僻字版）
@@ -157,7 +159,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__generalEnhancedUrl, data)
-    
+
     def webImage(self, image, options=None):
         """
             网络图片文字识别
@@ -170,7 +172,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__webImageUrl, data)
-    
+
     def webImageUrl(self, url, options=None):
         """
             网络图片文字识别
@@ -183,7 +185,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__webImageUrl, data)
-    
+
     def idcard(self, image, id_card_side, options=None):
         """
             身份证识别
@@ -197,7 +199,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__idcardUrl, data)
-    
+
     def bankcard(self, image, options=None):
         """
             银行卡识别
@@ -210,7 +212,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__bankcardUrl, data)
-    
+
     def drivingLicense(self, image, options=None):
         """
             驾驶证识别
@@ -223,7 +225,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__drivingLicenseUrl, data)
-    
+
     def vehicleLicense(self, image, options=None):
         """
             行驶证识别
@@ -236,7 +238,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__vehicleLicenseUrl, data)
-    
+
     def licensePlate(self, image, options=None):
         """
             车牌识别
@@ -249,7 +251,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__licensePlateUrl, data)
-    
+
     def businessLicense(self, image, options=None):
         """
             营业执照识别
@@ -262,7 +264,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__businessLicenseUrl, data)
-    
+
     def receipt(self, image, options=None):
         """
             通用票据识别
@@ -275,7 +277,20 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__receiptUrl, data)
-    
+
+    def lottery(self, image, options=None):
+        """
+            彩票识别
+        """
+        options = options or {}
+
+        data = {}
+        data['image'] = base64.b64encode(image).decode()
+
+        data.update(options)
+
+        return self._request(self.__lotteryUrl, data)
+
     def custom(self, image, templateSign, options=None):
         """
             自定义模版文字识别
@@ -289,7 +304,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__customUrl, data)
-    
+
     def tableRecognitionAsync(self, image, options=None):
         """
             表格文字识别
@@ -302,7 +317,7 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__tableRecognizeUrl, data)
-    
+
     def getTableRecognitionResult(self, request_id, options=None):
         """
             表格识别结果
@@ -315,23 +330,23 @@ class AipOcr(AipBase):
         data.update(options)
 
         return self._request(self.__tableResultGetUrl, data)
-    
+
     def tableRecognition(self, image, options=None, timeout=10000):
         """
             tableRecognition
         """
-        
+
         result = self.tableRecognitionAsync(image)
 
         if 'error_code' in result:
             return result
-        
+
         requestId = result['result'][0]['request_id']
         for i in range(int(math.ceil(timeout / 1000.0))):
             result = self.getTableRecognitionResult(requestId, options)
-            
+
             # 完成
-            if int(result['result']['ret_code']) == 3: 
+            if int(result['result']['ret_code']) == 3:
                 break
             time.sleep(1)
 
